@@ -16,7 +16,7 @@
                 
                 {% if not request.session.get('user') %}
                     <a href="/login" class="btn btn-primary btn-lg">
-                        <i class="bi bi-shield-check"></i> Login with Ismaili Auth
+                        <i class="bi bi-shield-check"></i> Login with OAuth
                     </a>
                 {% else %}
                     <div class="alert alert-success" role="alert">

@@ -63,6 +63,11 @@
                 </h5>
             </div>
             <div class="card-body">
+                {% if token.refresh_token %}
+                <a href="/refresh" class="btn btn-outline-info w-100 mb-2">
+                    <i class="bi bi-arrow-clockwise"></i> Refresh Token
+                </a>
+                {% endif %}
                 <a href="/logout" class="btn btn-outline-danger w-100 mb-2">
                     <i class="bi bi-box-arrow-right"></i> Logout
                 </a>
@@ -98,6 +103,9 @@
                                 <div class="token-display">{{ token.access_token }}</div>
                                 {% if token.expires_in %}
                                 <small class="text-muted">Expires in: {{ token.expires_in }} seconds</small>
+                                {% endif %}
+                                {% if token.expires_at %}
+                                <br><small class="text-muted">Expires at: {{ token.expires_at | format_timestamp }}</small>
                                 {% endif %}
                             </div>
                         </div>
