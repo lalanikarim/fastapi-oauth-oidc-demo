@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Home - OAuth Demo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card profile-card">
+            <div class="card-body text-center p-5">
+                <i class="bi bi-shield-check text-primary" style="font-size: 4rem;"></i>
+                <h1 class="card-title mt-3 mb-4">OAuth OpenID Connect Demo</h1>
+                <p class="card-text text-muted mb-4">
+                    This application demonstrates OAuth 2.0 and OpenID Connect authentication 
+                    using FastAPI and Authlib. Click the button below to start the authentication flow.
+                </p>
+                
+                {% if not request.session.get('user') %}
+                    <a href="/login" class="btn btn-primary btn-lg">
+                        <i class="bi bi-shield-check"></i> Login with Ismaili Auth
+                    </a>
+                {% else %}
+                    <div class="alert alert-success" role="alert">
+                        <i class="bi bi-check-circle"></i> You are already logged in!
+                    </div>
+                    <a href="/profile" class="btn btn-primary btn-lg">
+                        <i class="bi bi-person-circle"></i> View Profile
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-info-circle"></i> Features
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check text-success"></i> OAuth 2.0 Authorization Code Flow</li>
+                    <li><i class="bi bi-check text-success"></i> OpenID Connect Integration</li>
+                    <li><i class="bi bi-check text-success"></i> Token Display (Access, Refresh, ID Token)</li>
+                    <li><i class="bi bi-check text-success"></i> User Profile Information</li>
+                    <li><i class="bi bi-check text-success"></i> Session Management</li>
+                    <li><i class="bi bi-check text-success"></i> Secure Logout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
