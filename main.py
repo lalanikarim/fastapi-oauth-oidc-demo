@@ -38,18 +38,31 @@ templates.env.filters['format_timestamp'] = format_timestamp
 oauth = OAuth()
 
 # Register OAuth client with OpenID Connect
-oauth.register(
-    name='oauth_client',
-    client_id=settings.oauth_client_id,
-    client_secret=settings.oauth_client_secret,
-    authorize_url=settings.oauth_authorize_url,
-    access_token_url=settings.oauth_token_url,
-    userinfo_endpoint=settings.oauth_userinfo_url,
-    jwks_uri=settings.oauth_jwks_url,
-    client_kwargs={
-        'scope': settings.oauth_scopes
-    }
-)
+if settings.oauth_discovery_url:
+    # Use OpenID Connect Discovery (preferred method)
+    oauth.register(
+        name='oauth_client',
+        client_id=settings.oauth_client_id,
+        client_secret=settings.oauth_client_secret,
+        server_metadata_url=settings.oauth_discovery_url,
+        client_kwargs={
+            'scope': settings.oauth_scopes
+        }
+    )
+else:
+    # Fallback to manual configuration
+    oauth.register(
+        name='oauth_client',
+        client_id=settings.oauth_client_id,
+        client_secret=settings.oauth_client_secret,
+        authorize_url=settings.oauth_authorize_url,
+        access_token_url=settings.oauth_token_url,
+        userinfo_endpoint=settings.oauth_userinfo_url,
+        jwks_uri=settings.oauth_jwks_url,
+        client_kwargs={
+            'scope': settings.oauth_scopes
+        }
+    )
 
 
 @app.get("/", response_class=HTMLResponse)

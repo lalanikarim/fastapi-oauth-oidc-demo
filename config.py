@@ -21,7 +21,10 @@ class Settings:
     oauth_redirect_uri: str = os.getenv("OAUTH_REDIRECT_URI", "http://localhost:8000/auth")
     oauth_scopes: str = os.getenv("OAUTH_SCOPES", "openid offline_access")
     
-    # OAuth Provider URLs
+    # OpenID Connect Discovery URL (preferred method)
+    oauth_discovery_url: Optional[str] = os.getenv("OAUTH_DISCOVERY_URL", None)
+    
+    # Individual OAuth Provider URLs (fallback if discovery URL not provided)
     oauth_authorize_url: str = os.getenv("OAUTH_AUTHORIZE_URL", "https://example.com/oauth2/auth")
     oauth_token_url: str = os.getenv("OAUTH_TOKEN_URL", "https://example.com/oauth2/token")
     oauth_userinfo_url: str = os.getenv("OAUTH_USERINFO_URL", "https://example.com/userinfo")

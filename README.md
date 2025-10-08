@@ -36,6 +36,16 @@ FastAPI application implementing OAuth 2.0 and OpenID Connect authentication usi
    ```
    
    Edit `.env` and add your OAuth provider credentials:
+   
+   **Option 1: Using OpenID Connect Discovery (recommended)**
+   ```env
+   SECRET_KEY=your-super-secret-key-here
+   OAUTH_CLIENT_ID=your-oauth-client-id
+   OAUTH_CLIENT_SECRET=your-oauth-client-secret
+   OAUTH_DISCOVERY_URL=https://your-provider.com/.well-known/openid-configuration
+   ```
+   
+   **Option 2: Manual configuration**
    ```env
    SECRET_KEY=your-super-secret-key-here
    OAUTH_CLIENT_ID=your-oauth-client-id
