@@ -19,6 +19,7 @@ class Settings:
     oauth_client_id: str = os.getenv("OAUTH_CLIENT_ID", "demo-client-id")
     oauth_client_secret: str = os.getenv("OAUTH_CLIENT_SECRET", "demo-client-secret")
     oauth_redirect_uri: str = os.getenv("OAUTH_REDIRECT_URI", "http://localhost:8000/auth")
+    oauth_scopes: str = os.getenv("OAUTH_SCOPES", "openid offline_access")
     
     # OAuth Provider URLs
     oauth_authorize_url: str = os.getenv("OAUTH_AUTHORIZE_URL", "https://example.com/oauth2/auth")
@@ -35,13 +36,13 @@ class Settings:
         if not self.oauth_client_id or self.oauth_client_id == "demo-client-id":
             raise ValueError(
                 "OAUTH_CLIENT_ID environment variable is required. "
-                "Please set up your auth.usa.ismaili OAuth credentials in a .env file. "
+                "Please set up your OAuth credentials in a .env file. "
                 "See README.md for setup instructions."
             )
         if not self.oauth_client_secret or self.oauth_client_secret == "demo-client-secret":
             raise ValueError(
                 "OAUTH_CLIENT_SECRET environment variable is required. "
-                "Please set up your auth.usa.ismaili OAuth credentials in a .env file. "
+                "Please set up your OAuth credentials in a .env file. "
                 "See README.md for setup instructions."
             )
 

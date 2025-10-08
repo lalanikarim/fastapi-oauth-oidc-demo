@@ -35,15 +35,15 @@ A FastAPI application demonstrating OAuth 2.0 and OpenID Connect authentication 
    cp env.example .env
    ```
    
-   Edit `.env` and add your auth.usa.ismaili OAuth credentials:
+   Edit `.env` and add your OAuth provider credentials:
    ```env
    SECRET_KEY=your-super-secret-key-here
-   OAUTH_CLIENT_ID=your-ismaili-client-id
-   OAUTH_CLIENT_SECRET=your-ismaili-client-secret
+   OAUTH_CLIENT_ID=your-oauth-client-id
+   OAUTH_CLIENT_SECRET=your-oauth-client-secret
    ```
 
-4. **Get auth.usa.ismaili OAuth Credentials:**
-   - Contact the auth.usa.ismaili administrators to register your application
+4. **Get OAuth Provider Credentials:**
+   - Contact your OAuth provider administrators to register your application
    - Provide them with the following information:
      - **Application Name**: FastAPI OAuth Demo App
      - **Redirect URI**: `http://localhost:8000/auth`
